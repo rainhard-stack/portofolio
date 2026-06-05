@@ -1,0 +1,533 @@
+# portofolio
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Rainhard Stack</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            line-height: 1.6;
+            color: #5a4a42;
+            background: linear-gradient(135deg, #fef5f1 0%, #fce9e0 50%, #f8e4db 100%);
+            min-height: 100vh;
+        }
+
+        /* Decorative elements */
+        body::before {
+            content: "✨";
+            position: fixed;
+            top: 10%;
+            left: 5%;
+            font-size: 3em;
+            opacity: 0.3;
+            z-index: -1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        body::after {
+            content: "🎀";
+            position: fixed;
+            bottom: 10%;
+            right: 5%;
+            font-size: 3em;
+            opacity: 0.3;
+            z-index: -1;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        header {
+            background: linear-gradient(135deg, #f4a9b8 0%, #f5b9c1 50%, #e8a7b8 100%);
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(244, 169, 184, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "💕";
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 2em;
+            animation: bounce 3s ease-in-out infinite;
+        }
+
+        header::after {
+            content: "🌸";
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-size: 2.5em;
+            animation: bounce 3.5s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            background: linear-gradient(90deg, #fbd9e4 0%, #f5d4e0 100%);
+            padding: 15px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(244, 169, 184, 0.2);
+            border-bottom: 3px dashed #f4a9b8;
+        }
+
+        nav a {
+            color: #5a4a42;
+            text-decoration: none;
+            margin: 0 25px;
+            font-weight: 700;
+            font-size: 1.05em;
+            transition: all 0.3s ease;
+            position: relative;
+            letter-spacing: 1px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #f4a9b8;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #f4a9b8;
+            transform: scale(1.1);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        section {
+            background: linear-gradient(135deg, #fff9f7 0%, #fef5f1 100%);
+            margin: 40px 0;
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(244, 169, 184, 0.15);
+            border: 2px dashed #f4a9b8;
+            animation: slideIn 0.6s ease-in;
+            position: relative;
+        }
+
+        section::before {
+            content: '🎀';
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            font-size: 1.8em;
+            opacity: 0.6;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            color: #f4a9b8;
+            font-size: 2.5em;
+            margin-bottom: 35px;
+            border-bottom: 3px dashed #f4a9b8;
+            padding-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            color: #e8a7b8;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .about-content {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: #5a4a42;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .education-item,
+        .experience-item {
+            margin-bottom: 30px;
+            padding: 25px 30px;
+            background: linear-gradient(135deg, #fef0f5 0%, #fde9f0 100%);
+            border-left: 5px solid #f4a9b8;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(244, 169, 184, 0.1);
+            position: relative;
+        }
+
+        .education-item::before,
+        .experience-item::before {
+            content: '✨';
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 1.5em;
+            opacity: 0.5;
+        }
+
+        .education-item:hover,
+        .experience-item:hover {
+            transform: translateX(15px);
+            box-shadow: 0 10px 30px rgba(244, 169, 184, 0.25);
+            background: linear-gradient(135deg, #fde9f0 0%, #fdd8e8 100%);
+        }
+
+        .education-item h4,
+        .experience-item h4 {
+            color: #f4a9b8;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .education-item .year,
+        .experience-item .year {
+            color: #d4868d;
+            font-size: 0.95em;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #f4a9b8 0%, #f5b9c1 100%);
+            color: #fff;
+            padding: 25px 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(244, 169, 184, 0.2);
+            font-size: 1.05em;
+            letter-spacing: 1px;
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .skill-card::before {
+            content: '💕';
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.5em;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(244, 169, 184, 0.35);
+            background: linear-gradient(135deg, #f5b9c1 0%, #f4a9b8 100%);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .contact-item {
+            background: linear-gradient(135deg, #fef0f5 0%, #fde9f0 100%);
+            padding: 30px 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(244, 169, 184, 0.15);
+            border: 2px dashed #f4a9b8;
+        }
+
+        .contact-item:hover {
+            background: linear-gradient(135deg, #f4a9b8 0%, #f5b9c1 100%);
+            color: white;
+            transform: scale(1.08) rotateY(5deg);
+            box-shadow: 0 15px 35px rgba(244, 169, 184, 0.3);
+        }
+
+        .contact-item h4 {
+            color: #f4a9b8;
+            margin: 15px 0 12px;
+            font-size: 1.2em;
+            letter-spacing: 1px;
+        }
+
+        .contact-item:hover h4 {
+            color: white;
+        }
+
+        .contact-item a {
+            color: #f4a9b8;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .contact-item:hover a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: linear-gradient(90deg, #f4a9b8 0%, #f5b9c1 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 -10px 30px rgba(244, 169, 184, 0.2);
+        }
+
+        footer p {
+            font-size: 1.05em;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            nav a {
+                display: block;
+                margin: 12px 0;
+                font-size: 0.95em;
+            }
+
+            section {
+                padding: 30px 20px;
+            }
+
+            .skills-container {
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+                gap: 15px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Rainhard Stack</h1>
+        <p>✨ Web Developer & Full Stack Engineer ✨</p>
+    </header>
+
+    <nav>
+        <a href="#about">Tentang Saya</a>
+        <a href="#education">Pendidikan</a>
+        <a href="#experience">Pengalaman</a>
+        <a href="#skills">Skill</a>
+        <a href="#contact">Kontak</a>
+    </nav>
+
+    <div class="container">
+        <!-- About Section -->
+        <section id="about">
+            <h2>💕 Tentang Saya</h2>
+            <div class="about-content">
+                <p>Halo sayang! Saya adalah seorang Full Stack Developer yang passionate dengan teknologi web modern. Saya memiliki pengalaman dalam mengembangkan aplikasi web yang responsif dan user-friendly menggunakan berbagai teknologi terkini.</p>
+                <p>Saya berkomitmen untuk terus belajar dan berkembang dalam industri teknologi, serta selalu siap untuk menghadapi tantangan baru yang menarik. Mari kita ciptakan sesuatu yang indah bersama! ✨</p>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2>🎓 Pendidikan</h2>
+            
+            <div class="education-item">
+                <h4>Sarjana Teknik Informatika</h4>
+                <div class="year">2020 - 2024</div>
+                <p><strong>Universitas Teknologi Nasional</strong></p>
+                <p>GPA: 3.75/4.0 | Jurusan: Teknik Informatika</p>
+            </div>
+
+            <div class="education-item">
+                <h4>Bootcamp Full Stack Development</h4>
+                <div class="year">2024</div>
+                <p><strong>Code Academy Indonesia</strong></p>
+                <p>Menyelesaikan program intensif 12 minggu tentang web development modern</p>
+            </div>
+
+            <div class="education-item">
+                <h4>Sertifikasi Google Cloud Associate Cloud Engineer</h4>
+                <div class="year">2024</div>
+                <p><strong>Google Cloud</strong></p>
+                <p>Tersertifikasi dalam cloud infrastructure dan deployment</p>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>💼 Pengalaman Kerja</h2>
+            
+            <div class="experience-item">
+                <h4>Full Stack Developer</h4>
+                <div class="year">Januari 2024 - Sekarang</div>
+                <p><strong>PT. Digital Innovate Indonesia</strong></p>
+                <p>• Mengembangkan aplikasi web menggunakan React.js dan Node.js<br>
+                   • Mengoptimalkan performa aplikasi hingga 40%<br>
+                   • Berkolaborasi dengan tim design dan backend untuk implementasi fitur</p>
+            </div>
+
+            <div class="experience-item">
+                <h4>Frontend Developer</h4>
+                <div class="year">Juli 2023 - Desember 2023</div>
+                <p><strong>Startup Tech Hub</strong></p>
+                <p>• Membangun UI/UX interface menggunakan React dan Tailwind CSS<br>
+                   • Implementasi responsive design untuk mobile dan desktop<br>
+                   • Testing dan debugging aplikasi frontend</p>
+            </div>
+
+            <div class="experience-item">
+                <h4>Junior Web Developer</h4>
+                <div class="year">Mei 2023 - Juni 2023</div>
+                <p><strong>Web Solutions Company</strong></p>
+                <p>• Mengembangkan fitur-fitur website menggunakan HTML, CSS, JavaScript<br>
+                   • Maintenance dan update website existing clients<br>
+                   • Pembelajaran dan pengembangan skill dalam industri</p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>🌸 Skill & Teknologi</h2>
+            <div class="skills-container">
+                <div class="skill-card">HTML5</div>
+                <div class="skill-card">CSS3</div>
+                <div class="skill-card">JavaScript</div>
+                <div class="skill-card">React.js</div>
+                <div class="skill-card">Node.js</div>
+                <div class="skill-card">Express.js</div>
+                <div class="skill-card">MongoDB</div>
+                <div class="skill-card">PostgreSQL</div>
+                <div class="skill-card">Git & GitHub</div>
+                <div class="skill-card">REST API</div>
+                <div class="skill-card">Docker</div>
+                <div class="skill-card">Google Cloud</div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>💖 Kontak</h2>
+            <div class="contact-content">
+                <div class="contact-item">
+                    <div class="icon">📧</div>
+                    <h4>Email</h4>
+                    <a href="mailto:rainhard@example.com">rainhard@example.com</a>
+                </div>
+
+                <div class="contact-item">
+                    <div class="icon">📱</div>
+                    <h4>Telepon</h4>
+                    <a href="tel:+62812345678">+62 812 3456 789</a>
+                </div>
+
+                <div class="contact-item">
+                    <div class="icon">💼</div>
+                    <h4>LinkedIn</h4>
+                    <a href="https://linkedin.com/in/rainhard" target="_blank">linkedin.com/in/rainhard</a>
+                </div>
+
+                <div class="contact-item">
+                    <div class="icon">🐙</div>
+                    <h4>GitHub</h4>
+                    <a href="https://github.com/rainhard-stack" target="_blank">github.com/rainhard-stack</a>
+                </div>
+
+                <div class="contact-item">
+                    <div class="icon">🌐</div>
+                    <h4>Portfolio</h4>
+                    <a href="https://rainhard-portfolio.com" target="_blank">rainhard-portfolio.com</a>
+                </div>
+
+                <div class="contact-item">
+                    <div class="icon">📍</div>
+                    <h4>Lokasi</h4>
+                    <p>Jakarta, Indonesia</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Rainhard Stack. All rights reserved. | Design dengan 💕 dan ✨</p>
+    </footer>
+</body>
+</html>
